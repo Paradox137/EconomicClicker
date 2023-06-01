@@ -29,7 +29,7 @@ namespace AdvantTest.Service.Player
 
 		public void Save()
 		{
-			FileStream file = new FileStream(Application.persistentDataPath + "/player.dat", FileMode.OpenOrCreate);
+			FileStream file = new FileStream(Application.persistentDataPath + "/playerData.dat", FileMode.OpenOrCreate);
 			BinaryFormatter formatter = new BinaryFormatter();
 			formatter.Serialize(file, saveGame);
 			file.Close();
@@ -37,9 +37,9 @@ namespace AdvantTest.Service.Player
 
 		public void Load()
 		{
-			if (File.Exists(Application.persistentDataPath + "/player.dat"))
+			if (File.Exists(Application.persistentDataPath + "/playerData.dat"))
 			{
-				FileStream file = new FileStream(Application.persistentDataPath + "/player.dat", FileMode.Open);
+				FileStream file = new FileStream(Application.persistentDataPath + "/playerData.dat", FileMode.Open);
 				BinaryFormatter formatter = new BinaryFormatter();
 				saveGame = formatter.Deserialize(file) as PlayerInfo;
 				file.Close();
